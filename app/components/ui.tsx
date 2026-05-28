@@ -8,9 +8,13 @@ export function Logo() {
     <Image
       src="/logo-baf.png"
       alt="BAF"
-      width={96}
-      height={36}
-      style={{ objectFit: 'contain', objectPosition: 'left center' }}
+      width={140}
+      height={52}
+      style={{
+        objectFit: 'contain',
+        objectPosition: 'left center',
+        mixBlendMode: 'screen',
+      }}
       priority
     />
   )
@@ -37,7 +41,7 @@ export function Card({ children, style }: { children: ReactNode; style?: CSSProp
   return (
     <div style={{
       background: 'var(--bg-card)',
-      border: '1px solid var(--border)',
+      border: '1px solid var(--border-hi)',
       borderRadius: 'var(--radius)',
       padding: '24px',
       ...style,

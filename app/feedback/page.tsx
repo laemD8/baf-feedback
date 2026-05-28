@@ -26,7 +26,10 @@ export default function FeedbackPage() {
   }
 
   async function send() {
-    if (!paraId || !texto.trim()) { setError('Select a person and write your feedback.'); return }
+    if (!paraId || !texto.trim()) {
+      setError('Select a person and write your feedback.')
+      return
+    }
     setEnviando(true)
     setError('')
     const res = await fetch('/api/feedback', {
@@ -39,11 +42,16 @@ export default function FeedbackPage() {
     setEnviando(false)
   }
 
-  if (loading) return <Shell><p style={{ color: 'var(--text-3)', fontSize: '12px' }}>Loading...</p></Shell>
+  if (loading) return (
+    <Shell>
+      <div style={{ marginBottom: '40px' }}><Logo /></div>
+      <p style={{ color: 'var(--text-3)', fontSize: '12px' }}>Loading...</p>
+    </Shell>
+  )
 
   if (!sesion) return (
     <Shell>
-      <div style={{ marginBottom: '48px' }}><Logo /></div>
+      <div style={{ marginBottom: '40px' }}><Logo /></div>
       <Card>
         <Eyebrow color="var(--text-3)">No active session</Eyebrow>
         <p style={{ fontSize: '13px', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '20px' }}>
@@ -56,7 +64,7 @@ export default function FeedbackPage() {
 
   if (enviado) return (
     <Shell>
-      <div style={{ marginBottom: '48px' }}><Logo /></div>
+      <div style={{ marginBottom: '40px' }}><Logo /></div>
       <Card>
         <div style={{
           width: '36px', height: '36px', borderRadius: '50%',
@@ -84,14 +92,33 @@ export default function FeedbackPage() {
 
   return (
     <Shell>
-      <div style={{ marginBottom: '48px' }}><Logo /></div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+      <div style={{ marginBottom: '40px' }}>
+        <Logo />
+      </div>
+
+      <div style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        marginBottom: '24px',
+      }}>
         <div>
-          <p style={{ fontSize: '9px', letterSpacing: '0.12em', color: 'var(--text-3)', textTransform: 'uppercase', marginBottom: '6px' }}>
+          <p style={{
+            fontSize: '9px',
+            letterSpacing: '0.12em',
+            color: 'var(--text-3)',
+            textTransform: 'uppercase',
+            marginBottom: '6px',
+          }}>
             Anonymous feedback
           </p>
-          <h1 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', letterSpacing: '-0.01em' }}>
+          <h1 style={{
+            fontSize: '18px',
+            fontWeight: 700,
+            color: 'var(--text-1)',
+            letterSpacing: '-0.01em',
+          }}>
             {sesion.nombre}
           </h1>
         </div>
@@ -109,6 +136,7 @@ export default function FeedbackPage() {
               options={personas.map(p => ({ value: String(p.id), label: p.nombre }))}
             />
           </div>
+
           <div>
             <FieldLabel>Your message</FieldLabel>
             <TextArea
@@ -117,10 +145,15 @@ export default function FeedbackPage() {
               placeholder="Be honest. AI rewrites your message constructively before delivery."
             />
           </div>
-          {error && <p style={{ fontSize: '11px', color: 'var(--pink)' }}>{error}</p>}
+
+          {error && (
+            <p style={{ fontSize: '11px', color: 'var(--pink)' }}>{error}</p>
+          )}
+
           <p style={{ fontSize: '10px', color: 'var(--text-3)', lineHeight: 1.6 }}>
             Your identity is never stored. Raw text never touches the database.
           </p>
+
           <Btn onClick={send} disabled={enviando}>
             {enviando ? 'Processing...' : 'Send feedback →'}
           </Btn>
@@ -128,8 +161,11 @@ export default function FeedbackPage() {
       </Card>
 
       <div style={{ marginTop: '16px', textAlign: 'center' }}>
-        <Link href="/" style={{ fontSize: '11px', color: 'var(--text-3)', textDecoration: 'none' }}>← Home</Link>
+        <Link href="/" style={{ fontSize: '11px', color: 'var(--text-3)', textDecoration: 'none' }}>
+          ← Home
+        </Link>
       </div>
+
     </Shell>
   )
 }

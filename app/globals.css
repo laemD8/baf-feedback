@@ -14,8 +14,8 @@
   --lime:      #B6FF00;
   --lime-dim:  #B6FF0018;
   --mono:      var(--font-mono), 'Courier New', monospace;
-  --radius:    12px;
-  --radius-sm: 8px;
+  --radius:    10px;
+  --radius-sm: 6px;
 }
 
 html, body {
