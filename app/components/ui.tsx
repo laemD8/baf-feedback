@@ -9,7 +9,7 @@ export function Logo() {
       src="/logo-baf.png"
       alt="BAF"
       width={140}
-      height={52}
+      height={140}
       style={{
         objectFit: 'contain',
         objectPosition: 'left center',
