@@ -8,8 +8,8 @@ export function Logo() {
     <Image
       src="/logo-baf.png"
       alt="BAF"
-      width={100}
-      height={100}
+      width={85}
+      height={85}
       style={{
         objectFit: 'contain',
         objectPosition: 'left center',
